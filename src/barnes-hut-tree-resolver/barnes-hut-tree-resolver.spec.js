@@ -10,9 +10,9 @@ describe('Resolver', () => {
         expect(resolver).toBeTruthy();
     });
 
-    describe("#calculateNewPositions", () => {
+    describe("#resolveNewPositions", () => {
         it('should exist', () => {
-            expect(resolver.calculateNewPositions).toBeTruthy();
+            expect(resolver.resolveNewPositions).toBeTruthy();
         });
     });
 });

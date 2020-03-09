@@ -13,7 +13,7 @@ class BarnesHutTreeResolver extends Resolver {
         this.resolvePositionsFromTree = this.gpu.createKernel(resolve, { dynamicOutput: true, dynamicArguments: true })
     }
 
-    calculateNewPositions(bodies, tree) {
+    resolveNewPositions(bodies, tree) {
         this.kernalWrapper(bodies, (bodiesArray) => {
             this.resolvePositionsFromTree.setOutput([bodies.length]);
             this.resolvePositionsFromTree.setLoopMaxIterations(tree.length);
