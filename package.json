@@ -10,5 +10,12 @@
     "gravity"
   ],
   "author": "Tim Williamson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gpu.js": "^2.6.6"
+  },
+  "devDependencies": {
+    "canvas": "^2.6.1",
+    "jest": "^25.1.0"
+  }
 }
