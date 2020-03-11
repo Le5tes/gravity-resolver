@@ -1,6 +1,6 @@
 {
   "name": "@gravity/gravity-resolver",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Resolves gravity for bodies, performing calculations on the gpu",
   "main": "index.js",
   "scripts": {
