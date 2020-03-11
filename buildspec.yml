@@ -24,8 +24,6 @@ phases:
             - echo "increment release version"
             - npm version patch -m "Release version"
             - git push --set-upstream "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Le5tes/gravity-resolver.git" master
-            - echo "build"
-            - npm run build
             - echo "publish"
             - if [ ! -d "~/.npmrc" ]; then touch ~/.npmrc; fi 
             - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
