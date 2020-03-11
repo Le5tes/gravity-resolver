@@ -1,7 +1,7 @@
 {
   "name": "@gravity/gravity-resolver",
   "version": "0.0.0",
-  "description": "Resolves gravity for bodies, performing calculations on the gpu ",
+  "description": "Resolves gravity for bodies, performing calculations on the gpu",
   "main": "index.js",
   "scripts": {
     "test": "jest"
