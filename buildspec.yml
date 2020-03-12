@@ -10,7 +10,6 @@ phases:
             - git config --global user.email "timwilliamson1337@gmail.com"
             - git fetch
             - git checkout development
-            - git remote
     pre_build:
         commands: 
             - npm i
@@ -18,13 +17,8 @@ phases:
         commands:
             - echo "run tests"
             - npm test
-            - git status
-            - git diff
             - echo "merge to master"
             - git checkout master
-            - git status
-            - git diff
-            - git log --graph --abbrev-commit
             - git merge development
             - echo "increment release version"
             - npm version patch -m "Release version"
