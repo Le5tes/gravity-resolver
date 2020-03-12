@@ -22,6 +22,8 @@ phases:
             - git diff
             - echo "merge to master"
             - git checkout master
+            - git status
+            - git diff
             - git merge development
             - echo "increment release version"
             - npm version patch -m "Release version"
