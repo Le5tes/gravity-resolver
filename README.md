@@ -18,7 +18,7 @@ Bodies should provide the following properties:
   - velocityX: number
   - velocityY: number 
 
-## Example usage - Gravity Resolver
+### Example usage - Gravity Resolver
 ```
 const GravityResolver = require('@gravity-simulator/gravity-resolver').GravityResolver;
 
@@ -63,6 +63,8 @@ console.log(bodies)
         }
     ]
 ```
+### Configuration
+Both Resolvers accept an input to the constructor for a gravity constant (default = 1)
 
 ### Considerations
 Gravity Resolver is suitable for smaller numbers of bodies. For larger numbers of bodies, Barnes Hut Tree resolver should offer greater performance. 
