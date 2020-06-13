@@ -1,7 +1,7 @@
 const Resolver = require('../resolver/resolver').Resolver;
 
 class BarnesHutTreeResolver extends Resolver {
-    constructor(gravityConstant) {
+    constructor(gravityConstant = 1) {
         super(gravityConstant);
     }
 
@@ -17,7 +17,7 @@ class BarnesHutTreeResolver extends Resolver {
         this.kernalWrapper(bodies, (bodiesArray) => {
             this.resolvePositionsFromTree.setOutput([bodies.length]);
             this.resolvePositionsFromTree.setLoopMaxIterations(tree.length);
-            this.calculatePositions.setConstants({gravityConstant: this.gravityConstant });
+            this.resolvePositionsFromTree.setConstants({gravityConstant: this.gravityConstant });
             return this.resolvePositionsFromTree(bodiesArray, tree);
         })
     }

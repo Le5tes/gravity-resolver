@@ -9,6 +9,10 @@
   "keywords": [
     "gravity"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Le5tes/gravity-resolver.git"
+  },
   "author": "Tim Williamson",
   "license": "ISC",
   "dependencies": {
