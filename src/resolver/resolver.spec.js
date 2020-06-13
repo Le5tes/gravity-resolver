@@ -46,9 +46,10 @@ describe('Resolver', () => {
             expect(resolver.resolveNewPositions).toBeTruthy();
         });
 
-        it('should update the passed in array of bodies with their new positions and velocities', () => {
-            resolver.resolveNewPositions(bodiesArray);
+        it('should update the passed in array of bodies with their new positions and velocities, and return the bodies', () => {
+            const result = resolver.resolveNewPositions(bodiesArray);
             
+            expect(result).toEqual(bodiesArray);
             expect(bodiesArray).toEqual([
                 {
                   mass: 100,
@@ -78,7 +79,7 @@ describe('Resolver', () => {
                   velocityX: -0.028289951384067535,
                   velocityY: -0.016628986224532127
                 }
-              ]);
+            ]);
         });
     });
 });

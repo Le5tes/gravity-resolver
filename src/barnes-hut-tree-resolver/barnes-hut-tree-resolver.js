@@ -14,10 +14,11 @@ class BarnesHutTreeResolver extends Resolver {
     }
 
     resolveNewPositions(bodies, tree) {
-        this.kernalWrapper(bodies, (bodiesArray) => {
+        return this.kernalWrapper(bodies, (bodiesArray) => {
             this.resolvePositionsFromTree.setOutput([bodies.length]);
             this.resolvePositionsFromTree.setLoopMaxIterations(tree.length);
             this.resolvePositionsFromTree.setConstants({gravityConstant: this.gravityConstant });
+            
             return this.resolvePositionsFromTree(bodiesArray, tree);
         })
     }
@@ -60,7 +61,7 @@ function resolve (bodies, tree) {
 
         } else if (bodyAddress !== -1) {
             if (notTheSameBody([bodies[bodyAddress][0], bodies[bodyAddress][1], bodies[bodyAddress][2]], [bodies[this.thread.x][0], bodies[this.thread.x][1], bodies[this.thread.x][2]]) == 1) {
-                const acceleration = findAcceleration([bodies[bodyAddress][2], bodies[bodyAddress][0], bodies[bodyAddress][1]], [bodies[this.thread.x][2], bodies[this.thread.x][0], bodies[this.thread.x][1]], 
+                const acceleration = findAccelerationBetweenBodies([bodies[bodyAddress][2], bodies[bodyAddress][0], bodies[bodyAddress][1]], [bodies[this.thread.x][2], bodies[this.thread.x][0], bodies[this.thread.x][1]], 
                     this.constants.gravityConstant)
                 xVelocity += acceleration[0]
                 yVelocity += acceleration[1]

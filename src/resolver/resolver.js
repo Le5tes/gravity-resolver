@@ -22,7 +22,7 @@ class Resolver {
     }
 
     resolveNewPositions(bodies) {
-        this.kernalWrapper(bodies, (bodiesArray) => {
+        return this.kernalWrapper(bodies, (bodiesArray) => {
             this.calculatePositions.setOutput([bodies.length]);
             this.calculatePositions.setConstants({ size: bodies.length, gravityConstant: this.gravityConstant });
             return this.calculatePositions(bodiesArray);
@@ -40,6 +40,8 @@ class Resolver {
             bodies[index].velocityX = element[2];
             bodies[index].velocityY = element[3];
         });
+
+        return bodies;
     }
 }
 
