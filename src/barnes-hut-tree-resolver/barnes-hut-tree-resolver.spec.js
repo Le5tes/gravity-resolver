@@ -63,6 +63,15 @@ describe('Resolver', () => {
             const result = resolver.resolveNewPositions(bodies, tree);
 
             expect(result).toBeTruthy();
-        })
+        });
+
+        it('should be able to resolve a larger tree', () => {
+            const bodies = require('../test-data/bodies').bodies;
+            const tree = require('../test-data/tree').tree;
+
+            const result = resolver.resolveNewPositions(bodies, tree);
+
+            expect(result).toBeTruthy();
+        });
     });
 });

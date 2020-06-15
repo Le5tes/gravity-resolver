@@ -70,7 +70,7 @@ function resolve (bodies, tree) {
             currentAddress = parentAddress;
 
         } else if (isSmallEnoughAngle(bodies[this.thread.x][0], bodies[this.thread.x][1], tree[currentAddress][0], tree[currentAddress][1], tree[currentAddress][3]) == 1) {
-            const acceleration = findAcceleration([tree[currentAddress][2], tree[currentAddress][0], tree[currentAddress][1]], [bodies[this.thread.x][2], bodies[this.thread.x][0], bodies[this.thread.x][1]], 
+            const acceleration = findAccelerationBetweenBodies([tree[currentAddress][2], tree[currentAddress][0], tree[currentAddress][1]], [bodies[this.thread.x][2], bodies[this.thread.x][0], bodies[this.thread.x][1]], 
                 this.constants.gravityConstant)
             xVelocity += acceleration[0]
             yVelocity += acceleration[1]
