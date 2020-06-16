@@ -73,5 +73,58 @@ describe('Resolver', () => {
 
             expect(result).toBeTruthy();
         });
+
+        it('should cause stationary bodies to become closer together', () => {
+            const bodiesArray = [{
+                mass: 100,
+                positionX: 100,
+                positionY: 100,
+                velocityX: 0,
+                velocityY: 0
+            }, {
+                mass: 100,
+                positionX: 0,
+                positionY: 0,
+                velocityX: 0,
+                velocityY: 0
+            }];
+
+            const tree = [
+                [
+                  50, 50, 200, 101,  0,
+                   0, -1,  -1,   2, -1,
+                  -1,  1
+                ],
+                [
+                   100,  100, 100, 50.5,
+                  50.5, 50.5,   0,    0,
+                    -1,   -1,  -1,   -1
+                ],
+                [
+                   0,  0, 100, 50.5,
+                   0,  0,   0,    1,
+                  -1, -1,  -1,   -1
+                ]
+            ]
+
+            const result = resolver.resolveNewPositions(bodiesArray, tree);
+
+            expect(result).toEqual([
+                {
+                  mass: 100,
+                  positionX: 99.99646759033203,
+                  positionY: 99.99646759033203,
+                  velocityX: -0.0035355337895452976,
+                  velocityY: -0.0035355337895452976
+                },
+                {
+                  mass: 100,
+                  positionX: 0.0035355337895452976,
+                  positionY: 0.0035355337895452976,
+                  velocityX: 0.0035355337895452976,
+                  velocityY: 0.0035355337895452976
+                }
+            ]);
+        });
     });
 });

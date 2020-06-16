@@ -30,8 +30,8 @@ class Resolver {
     }
 
     kernalWrapper(bodies, callback) {
-        const bodiesArray = bodies.map(body => [body.mass, body.positionX, body.positionY, body.velocityX, body.velocityY])
-    
+        const bodiesArray = bodies.map(body => [body.positionX, body.positionY, body.mass, body.velocityX, body.velocityY])
+
         const bodiesResponse = callback(bodiesArray);
 
         bodiesResponse.forEach((element, index) => {
@@ -46,16 +46,16 @@ class Resolver {
 }
 
 function resolve (bodies) {
-    let xPosition = bodies[this.thread.x][1]
-    let yPosition = bodies[this.thread.x][2]
+    let xPosition = bodies[this.thread.x][0]
+    let yPosition = bodies[this.thread.x][1]
     let xVelocity = bodies[this.thread.x][3]
     let yVelocity = bodies[this.thread.x][4]
 
     for (let i = 0; i < this.constants.size; i++) {
         if (i !== this.thread.x) {
             const acceleration = findAccelerationBetweenBodies(
-                [bodies[i][0], bodies[i][1], bodies[i][2]], 
-                [bodies[this.thread.x][0], xPosition, yPosition], 
+                [bodies[i][2], bodies[i][0], bodies[i][1]],
+                [bodies[this.thread.x][2], xPosition, yPosition],
                 this.constants.gravityConstant
             )
             xVelocity += acceleration[0]

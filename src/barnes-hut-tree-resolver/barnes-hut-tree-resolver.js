@@ -16,7 +16,7 @@ class BarnesHutTreeResolver extends Resolver {
     resolveNewPositions(bodies, tree) {
         return this.kernalWrapper(bodies, (bodiesArray) => {
             this.resolvePositionsFromTree.setOutput([bodies.length]);
-            this.resolvePositionsFromTree.setLoopMaxIterations(tree.length);
+            this.resolvePositionsFromTree.setLoopMaxIterations(tree.length * 5);
             this.resolvePositionsFromTree.setConstants({gravityConstant: this.gravityConstant });
             
             return this.resolvePositionsFromTree(bodiesArray, tree);
@@ -50,7 +50,6 @@ function resolve (bodies, tree) {
     let parentAddress = 0;
 
     while (currentAddress != -1) {
-
         const mass = tree[currentAddress][2];
         const bodyAddress = tree[currentAddress][7];
         parentAddress = tree[currentAddress][6];
@@ -66,7 +65,7 @@ function resolve (bodies, tree) {
                 xVelocity += acceleration[0]
                 yVelocity += acceleration[1]
             }
-            previousAddress = currentAddress
+            previousAddress = currentAddress;
             currentAddress = parentAddress;
 
         } else if (isSmallEnoughAngle(bodies[this.thread.x][0], bodies[this.thread.x][1], tree[currentAddress][0], tree[currentAddress][1], tree[currentAddress][3]) == 1) {
@@ -80,9 +79,11 @@ function resolve (bodies, tree) {
 
         } else {
             let previousSubnode = -1
-            for (let i = 0; i < 4; i++) {
-                if (previousAddress == tree[currentAddress][i + 8]) {
-                    previousSubnode = i;
+            if (previousAddress != -1) {
+                for (let i = 0; i < 4; i++) {
+                    if (previousAddress == tree[currentAddress][i + 8]) {
+                        previousSubnode = i;
+                    }
                 }
             }
 
