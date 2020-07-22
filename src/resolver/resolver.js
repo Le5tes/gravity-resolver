@@ -13,10 +13,10 @@ class Resolver {
     setupGpuFunctions() {
         this.gpu = new GPU();
 
-        this.gpu.addFunction(calculateAcceleration, {argumentTypes: {distance: 'Number', mass: 'Number', gravityConstant: 'Number'}})
-        this.gpu.addFunction(calculateHypoteneuse)
-        this.gpu.addFunction(unconjugate)
-        this.gpu.addFunction(findAccelerationBetweenBodies, {argumentTypes: {other: 'Array(3)', self: 'Array(3)', gravityConstant: 'Number'}})
+        this.gpu.addFunction(calculateAcceleration, {argumentTypes: {distance: 'Number', mass: 'Number', gravityConstant: 'Number'}, name: 'calculateAcceleration'});
+        this.gpu.addFunction(calculateHypoteneuse, {name: 'calculateHypoteneuse'});
+        this.gpu.addFunction(unconjugate, {name: 'unconjugate'});
+        this.gpu.addFunction(findAccelerationBetweenBodies, {argumentTypes: {other: 'Array(3)', self: 'Array(3)', gravityConstant: 'Number'}, name: 'findAccelerationBetweenBodies'});
 
         this.calculatePositions = this.gpu.createKernel(resolve, { dynamicOutput: true })
     }
