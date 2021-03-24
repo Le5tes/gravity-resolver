@@ -15,7 +15,7 @@ describe('Resolver', () => {
             expect(resolver.resolveNewPositions).toBeTruthy();
         });
 
-        it('should resolve a tree and bodies', () => {
+        it.only('should resolve a tree and bodies', () => {
             const bodies = [{
                 mass: 100,
                 positionX: 515,
@@ -62,6 +62,7 @@ describe('Resolver', () => {
 
             const result = resolver.resolveNewPositions(bodies, tree);
 
+            resolver.buildToJson();
             expect(result).toBeTruthy();
         });
 

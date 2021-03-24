@@ -1,4 +1,5 @@
 const Resolver = require('../resolver/resolver').Resolver;
+const fs = require('fs');
 
 class BarnesHutTreeResolver extends Resolver {
     constructor(gravityConstant = 1) {
@@ -10,7 +11,10 @@ class BarnesHutTreeResolver extends Resolver {
         this.gpu.addFunction(notTheSameBody, { argumentTypes: { body1: 'Array(3)', body2: 'Array(3)' } });
         this.gpu.addFunction(isSmallEnoughAngle);
 
-        this.resolvePositionsFromTree = this.gpu.createKernel(resolve, { dynamicOutput: true, dynamicArguments: true })
+        this.resolvePositionsFromTree = this.gpu.createKernel(JSON.parse(fs.readFileSync('./jsonKernal.json')))
+        // this.resolvePositionsFromTree = this.gpu.createKernel(resolve, { dynamicOutput: true, dynamicArguments: true })
+        
+
     }
 
     resolveNewPositions(bodies, tree) {
@@ -21,6 +25,15 @@ class BarnesHutTreeResolver extends Resolver {
             
             return this.resolvePositionsFromTree(bodiesArray, tree);
         })
+    }
+
+    buildToJson() {
+        console.log('writing')
+        const json = this.resolvePositionsFromTree.toJSON()
+        console.log(json)
+        fs.writeFileSync('./jsonKernal.json', JSON.stringify(json));
+        // fs.writeFileSync('./kernal.js', 'module.exports = ' + this.resolvePositionsFromTree.toString())
+        console.log('written')
     }
 }
 
